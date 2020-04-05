@@ -1,7 +1,7 @@
 from django.shortcuts import (render, get_object_or_404, redirect)
-from django.url import reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone
-from blog.models import Post, Comment
+from blog.models import Post
 from django.views.generic import(TemplateView, ListView, DetailView)
 
 class PostListView(ListView):
