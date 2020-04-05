@@ -1,15 +1,16 @@
-from django.shortcuts import (render, get_object_or_404, redirect)
-from django.urls import reverse_lazy
+from rest_framework import permissions, generics
+from django.shortcuts import render
 from django.utils import timezone
+from blog.serializers import PostSerializer
 from blog.models import Post
-from django.views.generic import(TemplateView, ListView, DetailView)
 
-class PostListView(ListView):
+class PostListView(generics.ListAPIView):
     model = Post
+    queryset = Post.objects.filter(
+        published_date__lte=timezone.now()).order_by('-published_date')
+    serializer_class = PostSerializer
 
-    def get_queryset(self):
-        return Posts.objects.filter(
-            published_date__lte=timezone.now()).order_by('-published_date')
-
-class PostDetailView(DetailView):
+class PostDetailView(generics.RetrieveAPIView):
     model = Post
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
