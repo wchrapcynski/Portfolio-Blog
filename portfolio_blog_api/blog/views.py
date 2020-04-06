@@ -1,13 +1,17 @@
-from rest_framework import permissions, generics
-from django.shortcuts import render
-from django.utils import timezone
+from rest_framework import generics
 from blog.serializers import PostSerializer
 from blog.models import Post
 
+class PostListViewThree(generics.ListAPIView):
+    model = Post
+    posts = Post.objects.all()
+    queryset = Post.objects.filter(id__gt = len(posts) - 3).order_by('-id')
+    serializer_class = PostSerializer
+
 class PostListView(generics.ListAPIView):
     model = Post
-    queryset = Post.objects.filter(
-        published_date__lte=timezone.now()).order_by('-published_date')
+    posts = Post.objects.all()
+    queryset = Post.objects.order_by('-id')
     serializer_class = PostSerializer
 
 class PostDetailView(generics.RetrieveAPIView):
