@@ -9,6 +9,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images', blank=True)
+    link = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return self.title
