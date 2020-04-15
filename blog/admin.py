@@ -4,7 +4,7 @@ from blog.models import Post
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
-    fields = ['title', 'published', 'text', 'image', 'link']
+    fields = ['title', 'published', 'text', 'image', 'link', 'author']
     search_fields = ['title']
     list_filter = ['published']
     list_display = ['title', 'published', 'image', 'link']
