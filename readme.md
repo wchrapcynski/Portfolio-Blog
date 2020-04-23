@@ -2,7 +2,7 @@
 
 ### Description
 
-This is a small blog API application that I created using Python, Django, and MySql. I created this for my portfolio website so that I could have a place to post developer updates.
+This is a small blog API application that I created using Python, Django, and MySql. I created this for my portfolio website so that I could have a place to post developer updates. A live version of this API can be accessed via this link <http://www.wchrapcynski.net:8000>.
 
 ### Requirements
 
